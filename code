@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class ATMSystem {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int balance = 5000;
+        int amount = 0;
+
+        try {
+            System.out.print("Enter amount to withdraw: ");
+            amount = sc.nextInt();
+
+            if (amount <= 0) {
+                throw new Exception("Amount must be greater than 0.");
+            }
+
+            if (amount > balance) {
+                throw new Exception("Insufficient Balance!");
+            }
+
+            balance -= amount;
+            System.out.println("Withdrawal Successful!");
+            System.out.println("Remaining Balance: " + balance);
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        sc.close();
+    }
+}
